@@ -3,8 +3,6 @@
 
 
 
-
-
 ## 📚 Table of Contents
 Business Task
 Entity Relationship Diagram
