@@ -16,13 +16,23 @@ Danny wants to use the data to answer a few simple questions about his customers
 
 ![image](https://github.com/user-attachments/assets/15b755f7-58ab-4590-8398-c74a76d77864)
 
-## Question and Solution
+# Question and Solution
 
-**1. What is the total amount each customer spent at the restaurant?**
-``` sql SELECT sales.customer_id, SUM(menu.price) as Money_Spent
+## 1. What is the total amount each customer spent at the restaurant?
+
+```sql
+SELECT sales.customer_id, SUM(menu.price) AS Money_Spent
 FROM sales
 INNER JOIN menu 
 ON sales.product_id = menu.product_id
 GROUP BY sales.customer_id
-ORDER BY SUM(menu.price) DESC; 
+ORDER BY SUM(menu.price) DESC;
+```
+*Results*
+| customer_id  | Money_Spent |
+| ------------- | ------------- |
+| A  | 76  |
+| B | 74  |
+| C | 36  |
 
+## 2. How many days has each customer visited the restaurant?
