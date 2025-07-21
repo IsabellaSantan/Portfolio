@@ -24,5 +24,5 @@ FROM sales
 INNER JOIN menu 
 ON sales.product_id = menu.product_id
 GROUP BY sales.customer_id
-ORDER BY SUM(menu.price) DESC; ```
+ORDER BY SUM(menu.price) DESC; 
 
