@@ -51,4 +51,27 @@ LIMIT 5;
 | Office Supplies  | Binders      | $30,221.64     |
 
 
-#### 
+#### Are there regions or segments operating at a loss?
+
+#### States that are operating at a loss
+
+``` sql
+SELECT State, SUM(PROFIT) AS Profits FROM sales_data
+GROUP BY State
+HAVING Profits < 0
+ORDER BY PROFITs ASC;
+```
+
+| State           | Total Profit (Loss) |
+|-----------------|---------------------|
+| Texas           | -$25,729.29         |
+| Ohio            | -$16,971.37         |
+| Pennsylvania    | -$15,560.04         |
+| Illinois        | -$12,607.89         |
+| North Carolina  | -$7,490.81          |
+| Colorado        | -$6,527.86          |
+| Tennessee       | -$5,341.66          |
+| Arizona         | -$3,427.87          |
+| Florida         | -$3,399.25          |
+| Oregon          | -$1,190.48          |
+
