@@ -131,6 +131,31 @@ LIMIT 10;
 | 9    | Staple-based wall hangings                                     | 16         |
 | 10   | Logitech 910-002974 M325 Wireless Mouse for Web Scrolling     | 15         |
 
+### Are there products being sold at a loss consistently?
+
+```sql
+SELECT 
+  Product_name, 
+  AVG(profit) as avgProfit
+FROM sales_data
+GROUP BY Product_name
+HAVING avgProfit < 0
+ORDER BY avgProfit ASC
+LIMIT 10;
+```
+| Rank | Product Name                                                                     | Avg Profit     |
+|------|----------------------------------------------------------------------------------|----------------|
+| 1    | Cubify CubeX 3D Printer Triple Head Print                                        | -3839.99       |
+| 2    | Cubify CubeX 3D Printer Double Head Print                                        | -2959.99       |
+| 3    | Cisco TelePresence System EX90 Videoconferencing Unit                           | -1811.08       |
+| 4    | Lexmark MX611dhe Monochrome Laser Printer                                       | -1147.49       |
+| 5    | Zebra GK420t Direct Thermal/Thermal Transfer Printer                            | -938.28        |
+| 6    | Chromcraft Bull-Nose Wood Oval Conference Tables & Bases                        | -575.22        |
+| 7    | Epson TM-T88V Direct Thermal Printer - Monochrome - Desktop                     | -528.62        |
+| 8    | BoxOffice By Design Rectangular and Half-Moon Meeting Room Tables               | -382.81        |
+| 9    | LG G2                                                                            | -374.99        |
+| 10   | Brother MFC-9340CDW LED All-In-One Printer, Copier Scanner                      | -319.19        |
+
 
 
 
