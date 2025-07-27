@@ -1,5 +1,7 @@
 # Buisness Sales Analysis for Super Store Dataset 
 
+## Sales
+
 Question 1
 ### What is the total sales and profit over time?
 ```sql
@@ -74,4 +76,65 @@ ORDER BY PROFITs ASC;
 | Arizona         | -$3,427.87          |
 | Florida         | -$3,399.25          |
 | Oregon          | -$1,190.48          |
+
+
+### How does discounting impact profit margins?
+```sql
+SELECT 
+  Discount,
+  COUNT(*) AS Transaction_Count,
+  SUM(Sales) AS Total_Sales,
+  SUM(Profit) AS Total_Profit,
+  AVG(Profit) AS Avg_Profit,
+  (SUM(Profit) / NULLIF(SUM(Sales), 0)) * 100 AS Profit_Margin_Percent
+FROM sales_data
+GROUP BY Discount
+ORDER BY Discount;
+```
+| Discount | Transactions | Total Sales   | Total Profit  | Avg Profit | Profit Margin (%) |
+|----------|--------------|---------------|---------------|------------|--------------------|
+| 0.00     | 4798         | 1,087,908.47  | 320,987.88    | 66.900350  | 29.505045          |
+| 0.10     | 94           | 54,369.30     | 9,029.21      | 96.055426  | 16.607185          |
+| 0.15     | 52           | 27,558.59     | 1,418.98      | 27.288077  | 5.148957           |
+| 0.20     | 3657         | 764,594.28    | 90,338.16     | 24.702806  | 11.815176          |
+| 0.30     | 227          | 103,226.76    | -10,369.34    | -45.679912 | -10.045205         |
+| 0.32     | 27           | 14,493.45     | -2,391.16     | -88.561481 | -16.498211         |
+| 0.40     | 206          | 116,417.83    | -23,057.08    | -111.927573| -19.805454         |
+| 0.45     | 11           | 5,484.98      | -2,493.12     | -226.647273| -45.453584         |
+| 0.50     | 66           | 58,918.65     | -20,506.51    | -310.704697| -34.804786         |
+| 0.60     | 138          | 6,644.68      | -5,944.64     | -43.077101 | -89.464654         |
+
+
+## Product Performance
+
+### Which products generate the highest revenue and profit?
+
+```sql
+SELECT 
+  Product_name, 
+  COUNT(*) AS occurrence
+FROM sales_data
+GROUP BY Product_name
+ORDER BY occurrence DESC
+LIMIT 10;
+```
+| Rank | Product Name                                                   | Occurrence |
+|------|----------------------------------------------------------------|------------|
+| 1    | Staple envelope                                                | 48         |
+| 2    | Easy-staple paper                                              | 46         |
+| 2    | Staples                                                        | 46         |
+| 4    | Avery Non-Stick Binders                                        | 20         |
+| 5    | Staples in misc. colors                                        | 19         |
+| 6    | Staple remover                                                 | 18         |
+| 6    | KI Adjustable-Height Table                                     | 18         |
+| 8    | Storex Dura Pro Binders                                        | 17         |
+| 9    | Staple-based wall hangings                                     | 16         |
+| 10   | Logitech 910-002974 M325 Wireless Mouse for Web Scrolling     | 15         |
+
+
+
+
+
+
+
 
