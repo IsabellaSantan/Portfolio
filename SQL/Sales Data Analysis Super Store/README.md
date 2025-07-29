@@ -156,6 +156,12 @@ LIMIT 10;
 | 9    | LG G2                                                                            | -374.99        |
 | 10   | Brother MFC-9340CDW LED All-In-One Printer, Copier Scanner                      | -319.19        |
 
+### Which product categories are experiencing growth or decline?
+
+```sql
+
+```
+
 
 
 
